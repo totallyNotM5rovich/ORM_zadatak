@@ -32,9 +32,6 @@ public class Main {
             System.out.printf("Jelo:\r\n%s\r\nSastojci: %s\r\n\r\n", meal.getName(), sastojci.substring(0,sastojci.length()-2));
         }
 
-//        System.out.println(jela.get(0).getIngredients().toString());
-//        System.out.println(jela.get(1).getIngredients().toString());
-
         em.close();
         emf.close();
     }
@@ -46,14 +43,18 @@ public class Main {
         String[] sastojciPasticada = {"Govedji but","Slanina","Luk","Cesnjak","Crno Vino"};
         Meal pasticada = new Meal("Pasticada");
         for (String s : sastojciPasticada) {
-            pasticada.getIngredients().add(new Ingredient(s));
+            Ingredient sastojak = new Ingredient(s);
+            sastojak.setMeal(pasticada);
+            pasticada.getIngredients().add(sastojak);
         }
         em.persist(pasticada);
 
         String[] sastojciGrah = {"Grah","Slanina","Luk","Slatka paprika","Brasno"};
         Meal zapeceniGrah = new Meal("Zapeceni grah");
         for (String s : sastojciGrah) {
-            zapeceniGrah.getIngredients().add(new Ingredient(s));
+            Ingredient sastojak = new Ingredient(s);
+            sastojak.setMeal(zapeceniGrah);
+            zapeceniGrah.getIngredients().add(sastojak);
         }
         em.persist(zapeceniGrah);
 
