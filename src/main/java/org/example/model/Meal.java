@@ -19,6 +19,9 @@ public class Meal {
         this.name = name;
     }
 
+    public Meal() {
+    }
+
     public Long getId() {
         return id;
     }
